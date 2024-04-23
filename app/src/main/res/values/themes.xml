@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ServiceOrder" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.ServiceOrder" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.ServiceOrder" parent="Base.Theme.ServiceOrder" />
+    <style name="Theme.ServiceOrder.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ServiceOrder.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>
