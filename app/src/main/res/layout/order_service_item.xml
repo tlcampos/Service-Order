@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_order"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_view_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/txt_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:text="OS"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/order_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/txt_icon"
+            android:textColor="@color/dark_gray"
+            android:textStyle="bold|italic"
+            tools:text="OS:000001"
+            android:textSize="18sp"
+            android:layout_alignTop="@id/txt_icon"/>
+
+        <TextView
+            android:id="@+id/order_data_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:text="25/abr"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:id="@+id/order_resume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_gray"
+        android:textStyle="bold|italic"
+        tools:text="O Celular não carrega após queda, necessita a troca do conector de carga"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:layout_below="@id/order_number"
+        android:layout_alignStart="@id/order_number"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
