@@ -30,6 +30,12 @@ class HomeFragment : Fragment() {
         val adapter = GroupieAdapter()
         recyclerView.adapter = adapter
 
-        adapter.add(OrderServiceItem(OrderService("OS:000001","26/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+        adapter.add(OrderServiceItem(OrderService("OS2024000001","26/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+        adapter.add(OrderServiceItem(OrderService("OS2024000002","26/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+        adapter.add(OrderServiceItem(OrderService("OS2024000003","27/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+        adapter.add(OrderServiceItem(OrderService("OS2024000004","27/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+        adapter.add(OrderServiceItem(OrderService("OS2024000005","28/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
+
+        adapter.notifyDataSetChanged()
     }
 }
