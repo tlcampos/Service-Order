@@ -10,6 +10,7 @@ import com.example.serviceorder.view.OrderServiceItem
 class HomePresenter(private val view: HomeFragment) {
 
     fun findAllOrderService() {
+        view.showProgress()
         fakeRequest()
     }
 
@@ -17,6 +18,13 @@ class HomePresenter(private val view: HomeFragment) {
         val orders =  response.map {  OrderServiceItem(it) }
 
         view.showOrders(orders)
+    }
+
+    fun onComplete(){
+        view.hideProgress()
+    }
+    fun onError(message: String){
+        view.showFailure(message)
     }
 
     private fun fakeRequest() {
@@ -54,7 +62,12 @@ class HomePresenter(private val view: HomeFragment) {
                 )
             )
           //Lista Pronta(response)
+
+            //onError("FALHA NA CONEXÃO. TENTE NOVAMENTE MAIS TARDE!")
+
             onSuccess(response)
+
+            onComplete()
         },2000)
     }
 }
