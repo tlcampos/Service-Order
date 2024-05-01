@@ -8,10 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceorder.R
-import com.example.serviceorder.model.OrderService
+import com.example.serviceorder.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
 class HomeFragment : Fragment() {
+
+    private lateinit var presenter: HomePresenter
+    private val adapter = GroupieAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = HomePresenter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,15 +35,14 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val adapter = GroupieAdapter()
+        presenter.findAllOrderService()
+
         recyclerView.adapter = adapter
+    }
 
-        adapter.add(OrderServiceItem(OrderService("OS2024000001","26/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
-        adapter.add(OrderServiceItem(OrderService("OS2024000002","26/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
-        adapter.add(OrderServiceItem(OrderService("OS2024000003","27/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
-        adapter.add(OrderServiceItem(OrderService("OS2024000004","27/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
-        adapter.add(OrderServiceItem(OrderService("OS2024000005","28/abril","Smartphone","O celular não carrega após queda, Necessita a troca")))
-
+    fun showOrders(orders: List<OrderServiceItem>) {
+        adapter.addAll(orders)
         adapter.notifyDataSetChanged()
+
     }
 }
