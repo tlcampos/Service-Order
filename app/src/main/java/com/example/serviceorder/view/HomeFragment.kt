@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.serviceorder.R
+import com.example.serviceorder.data.OrderServiceDataSource
 import com.example.serviceorder.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
@@ -21,7 +22,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = HomePresenter(this)
+        val dataSource = OrderServiceDataSource()
+        presenter = HomePresenter(this, dataSource)
     }
 
     override fun onCreateView(
