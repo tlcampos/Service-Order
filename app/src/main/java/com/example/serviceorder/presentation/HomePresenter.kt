@@ -9,7 +9,8 @@ import com.example.serviceorder.view.OrderServiceItem
 
 class HomePresenter(
     private val view: HomeFragment,
-    private val dataSource: OrderServiceDataSource) : ListOrderCallback {
+    private val dataSource: OrderServiceDataSource = OrderServiceDataSource()
+) : ListOrderCallback {
 
     fun findAllOrderService() {
         view.showProgress()

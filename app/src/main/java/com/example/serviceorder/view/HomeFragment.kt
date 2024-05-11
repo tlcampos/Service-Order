@@ -22,8 +22,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dataSource = OrderServiceDataSource()
-        presenter = HomePresenter(this, dataSource)
+
+        presenter = HomePresenter(this)
     }
 
     override fun onCreateView(
