@@ -1,52 +1,43 @@
 package com.example.serviceorder.data
 
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import com.example.serviceorder.model.OrderService
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
 
 class OrderServiceDataSource {
 
-    fun findAllOrders(callback: ListOrderCallback){
-        Handler(Looper.getMainLooper()).postDelayed({
-            val response = arrayListOf(
-                OrderService(
-                    "OS2024000001",
-                    "26/abril",
-                    "Smartphone",
-                    "O celular não carrega após queda, Necessita a troca"
-                ),
-                OrderService(
-                    "OS2024000002",
-                    "26/abril",
-                    "Smartphone",
-                    "O celular não carrega após queda, Necessita a troca"
-                ),
-                OrderService(
-                    "OS2024000003",
-                    "27/abril",
-                    "Smartphone",
-                    "O celular não carrega após queda, Necessita a troca"
-                ),
-                OrderService(
-                    "OS2024000004",
-                    "28/abril",
-                    "Smartphone",
-                    "O celular não carrega após queda, Necessita a troca"
-                ),
-                OrderService(
-                    "OS2024000005",
-                    "30/abril",
-                    "Smartphone",
-                    "O celular não carrega após queda, Necessita a troca"
-                )
-            )
-            //Lista Pronta(response)
+    private lateinit var dbRef: DatabaseReference
+    private lateinit var response: ArrayList<OrderService>
 
-            //onError("FALHA NA CONEXÃO. TENTE NOVAMENTE MAIS TARDE!")
+    fun findAllOrders(callback: ListOrderCallback) {
 
-            callback.onSuccess(response)
+        dbRef = FirebaseDatabase.getInstance().getReference("order")
 
-            callback.onComplete()
-        },2000)
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+  //              response.clear()
+                if (snapshot.exists()) {
+                    for (orderSnap in snapshot.children) {
+                        val order = orderSnap.getValue(OrderService::class.java)
+                        response.add(order!!)
+                        Log.d("Response", "ordem +$response")
+                    }
+                    callback.onSuccess(response)
+                }
+                callback.onComplete()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("Error", "loadPost:onCancelled", databaseError.toException())
+            }
+        })
+
     }
 }
+

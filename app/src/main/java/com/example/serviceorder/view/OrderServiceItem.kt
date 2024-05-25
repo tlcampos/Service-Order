@@ -14,8 +14,8 @@ class OrderServiceItem(private val orderService: OrderService) : Item<OrderServi
     override fun createViewHolder(itemView: View) = OrderServiceViewHolder(itemView)
 
     override fun bind(viewHolder: OrderServiceViewHolder, position: Int) {
-        viewHolder.itemView.findViewById<TextView>(R.id.order_number).text = orderService.orderNumber
-        viewHolder.itemView.findViewById<TextView>(R.id.order_data_open).text = orderService.orderDataStart
+        viewHolder.itemView.findViewById<TextView>(R.id.order_id).text = orderService.orderID
+        viewHolder.itemView.findViewById<TextView>(R.id.order_data_open).text = orderService.orderDateStart
         //viewHolder.itemView.findViewById<TextView>(R.id.order_device).text = orderService.orderDevice
         viewHolder.itemView.findViewById<TextView>(R.id.order_resume).text = orderService.orderResume
     }

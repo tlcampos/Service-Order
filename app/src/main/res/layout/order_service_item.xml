@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/order_number"
+            android:id="@+id/order_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -57,8 +57,8 @@
         tools:text="O Celular não carrega após queda, necessita a troca do conector de carga"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:layout_below="@id/order_number"
-        android:layout_alignStart="@id/order_number"/>
+        android:layout_below="@id/order_id"
+        android:layout_alignStart="@id/order_id"/>
 
     </RelativeLayout>
 
